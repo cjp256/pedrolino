@@ -1,0 +1,22 @@
+name: pedrolino
+version: 0.0.1
+summary: Bug reproducer
+description: |
+  Minimal reproducer of bug encountered while working on the
+  MicroStack snap.
+apps:
+  pedrolino:
+    command: usr/bin/python3 $SNAP/bin/pedrolino
+  printpath:
+    command: bin/printpath
+  sh:
+    command: bin/test.sh
+  wrapper:
+    command: bin/pedrolino.wrapper
+architectures:
+- amd64
+base: core18
+confinement: classic
+environment:
+  PATH: $SNAP/usr/bin:$PATH
+grade: stable
