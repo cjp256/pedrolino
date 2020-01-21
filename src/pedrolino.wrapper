@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo "in shell script"
+echo "$0 $@"
+echo "PATH: $PATH"
+
+echo "execing..."
+exec $SNAP/bin/pedrolino "$@"

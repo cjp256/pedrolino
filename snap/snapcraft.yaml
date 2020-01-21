@@ -6,14 +6,26 @@ description: |
   Minimal reproducer of bug encountered while working on the
   MicroStack snap.
 grade: stable
-confinement: classic  # This mirrors MicroStack, which must be classicly confined for now.
+confinement: classic
+
+environment:
+  PATH: $SNAP/usr/bin:$PATH
 
 apps:
-  test:
-    command: pedrolino
+  pedrolino:
+    command: bin/pedrolino
+  wrapper:
+    command: bin/pedrolino.wrapper
+  sh:
+    command: bin/test.sh 
 
 parts:
   pedrolino:
     plugin: python
     python-version: python3
     source: src/
+    override-build: |
+      snapcraftctl build
+      install -d -m 0755 $SNAPCRAFT_PART_INSTALL/bin
+      install -m 0755 test.sh $SNAPCRAFT_PART_INSTALL/bin/test.sh
+      install -m 0755 pedrolino.wrapper $SNAPCRAFT_PART_INSTALL/bin/pedrolino.wrapper

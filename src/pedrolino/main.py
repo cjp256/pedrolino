@@ -1,2 +1,10 @@
+import os
+import pprint
+import sys
+
+args = " ".join(sys.argv)
+print(f"{sys.executable} {args}")
+print("PATH:", os.environ["PATH"])
+
 def main():
-    print("If you are reading this, you have not reproduced the bug!")
+    print("hi")

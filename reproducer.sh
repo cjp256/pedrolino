@@ -1,8 +1,16 @@
 #!/bin/bash
 
-set -ex
+snapcraft try --debug
+sudo snap try $PWD/prime --classic
 
-snapcraft --debug
-sudo snap install --classic --dangerous pedrolino*.snap
-pedrolino.test || \
-    echo "If the above output contains a DistributionNotFound exception, you have reproduced the bug!"
+echo "**********"
+echo "[pedrolino]"
+pedrolino
+
+echo "**********"
+echo "[pedrolino.wrapper]"
+pedrolino.wrapper
+
+echo "**********"
+echo "[pedrolino.sh]"
+pedrolino.sh
