@@ -14,3 +14,7 @@ pedrolino.wrapper
 echo "**********"
 echo "[pedrolino.sh]"
 pedrolino.sh
+
+echo "**********"
+echo "[printpath]"
+pedrolino.printpath

@@ -18,6 +18,8 @@ apps:
     command: bin/pedrolino.wrapper
   sh:
     command: bin/test.sh 
+  printpath:
+    command: bin/printpath
 
 parts:
   pedrolino:
@@ -29,3 +31,9 @@ parts:
       install -d -m 0755 $SNAPCRAFT_PART_INSTALL/bin
       install -m 0755 test.sh $SNAPCRAFT_PART_INSTALL/bin/test.sh
       install -m 0755 pedrolino.wrapper $SNAPCRAFT_PART_INSTALL/bin/pedrolino.wrapper
+  printpath:
+    plugin: make
+    source: printpath/
+    override-build: |
+      install -d -m 0755 $SNAPCRAFT_PART_INSTALL/bin
+      gcc main.c -o $SNAPCRAFT_PART_INSTALL/bin/printpath
