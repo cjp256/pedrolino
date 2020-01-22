@@ -20,8 +20,6 @@ apps:
     command: bin/test.sh 
   printpath:
     command: bin/printpath
-    environment:
-      PATH: $SNAP/other-path:$PATH
 
 parts:
   pedrolino:
